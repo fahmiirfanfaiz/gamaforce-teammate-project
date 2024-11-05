@@ -8,7 +8,7 @@ const Navbar: React.FC = () => {
     <nav className="navbar">
       {/* Logo */}
       <div className="navbar-logo">
-        <Image src="/path-to-your-logo.png" alt="Gamaforce Logo" width={150} height={50} />
+        <Image src="https://ibb.co.com/yNyWkpP" alt="Gamaforce Logo" width={150} height={50} />
       </div>
 
       {/* Middle space (flex-grow) */}
