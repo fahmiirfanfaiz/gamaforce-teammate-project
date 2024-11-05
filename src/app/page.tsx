@@ -10,10 +10,10 @@ export default function Home() {
           <li>
             {/* <a href="#" className="text-gray-800 hover:text-gray-600">GAMAFORCE</a> */}
             <Image
-                src="/images/logo-gamaforce.png" // Path to the logo image
+                src="/images/logo-gamaforce.png" 
                 alt="Gamaforce Logo"
-                width={150} // Set width of the logo
-                height={50} // Set height of the logo
+                width={150} 
+                height={50} 
               />
           </li>
         </ul>
