@@ -17,23 +17,23 @@ export default function Home() {
 
         {/* Right side - Plan Mission Button */}
         <div className="flex items-center space-x-4">
-          <button className="bg-black text-white px-4 py-2 rounded-lg ml-2">
+          <button className="bg-black text-white px-4 py-2 rounded-lg">
             Plan Mission
           </button>
         </div>
       </nav>
 
       {/* Main content area */}
-      <main className="flex-grow flex flex-col items-center justify-center p-4">
-        {/* Map container */}
-        <div className="relative w-full h-full">
-          {/* Plan Mission Manually button positioned below the logo */}
-          <div className="absolute top-16 left-4">
-            <button className="bg-black text-white px-4 py-2 rounded-lg">
-              Plan Mission Manually
-            </button>
-          </div>
+      <main className="flex-grow flex flex-col p-4">
+        {/* Plan Mission Manually button below the logo, aligned to the bottom left */}
+        <div className="flex items-start mt-2">
+          <button className="bg-black text-white px-5 py-2 rounded-lg">
+            Plan Mission Manually
+          </button>
+        </div>
 
+        {/* Map container */}
+        <div className="relative w-full h-full mt-4">
           {/* Your map component would go here */}
         </div>
       </main>
