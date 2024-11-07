@@ -19,7 +19,7 @@ export default function Home() {
         {/* Right side - Plan Mission and History Icon */}
         <div className="flex items-center space-x-2">
           {/* Clickable History Icon */}
-          <button 
+          <button
             className="p-2 rounded hover:bg-gray-200"
             onClick={() => console.log('History button clicked')}
             aria-label="View History"
@@ -57,6 +57,9 @@ export default function Home() {
 
           {/* MapButtonGroup overlay */}
           <Button />
+          <div className="relative w-full h-full mt-[1.5vw]">
+          <Map />
+        </div>
         </div>
       </main>
     </div>
