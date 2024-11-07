@@ -1,8 +1,16 @@
 "use client";
 import Image from "next/image";
+import { useState } from "react";
 import Button from "./components/Button";
+import MissionManual from "./components/MissionManual";
 
 export default function Home() {
+  const [showMissionManual, setShowMissionManual] = useState(false);
+
+  const handlePlanMissionClick = () => {
+    setShowMissionManual(!showMissionManual);
+  };
+
   return (
     <div className="flex flex-col min-h-screen bg-slate-400">
       {/* Navbar */}
@@ -39,7 +47,10 @@ export default function Home() {
           </button>
 
           {/* Plan Mission Button */}
-          <button className="bg-black text-white px-4 py-2 rounded-lg">
+          <button
+            onClick={handlePlanMissionClick}
+            className="bg-black text-white px-4 py-2 rounded-lg"
+          >
             Plan Mission
           </button>
         </div>
@@ -47,12 +58,22 @@ export default function Home() {
 
       {/* Main content area */}
       <main className="flex-grow flex flex-col p-4">
-        {/* Plan Mission Manually button below the logo, aligned to the bottom left */}
+        {/* Plan Mission Manually button */}
         <div className="flex items-start mt-2">
-          <button className="bg-black text-white px-4 py-2 rounded-lg">
+          <button
+            onClick={handlePlanMissionClick}
+            className="bg-black text-white px-4 py-2 rounded-lg"
+          >
             Plan Mission Manually
           </button>
         </div>
+
+        {/* Conditional rendering of MissionManual */}
+        {showMissionManual && (
+          <div className="mt-4">
+            <MissionManual />
+          </div>
+        )}
 
         {/* Map container */}
         <div className="relative w-full h-full mt-4">
