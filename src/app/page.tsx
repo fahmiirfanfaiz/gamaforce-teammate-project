@@ -2,6 +2,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import Button from "./components/Button";
+import Map from "@/app/components/Map";
 import MissionManual from "./components/MissionManual";
 
 export default function Home() {
@@ -13,12 +14,10 @@ export default function Home() {
 
   return (
     <div className="flex flex-col min-h-screen bg-slate-400">
-      {/* Navbar */}
       <nav className="bg-white flex justify-between items-center p-4 shadow">
-        {/* Left side - Logo */}
         <div className="flex items-center">
           <Image
-            src="/images/gmfrc.png" // Path to your logo image
+            src="/images/gmfrc.png"
             alt="Gamaforce Logo"
             width={150}
             height={31.25}
@@ -28,7 +27,7 @@ export default function Home() {
         {/* Right side - Plan Mission and History Icon */}
         <div className="flex items-center space-x-2">
           {/* Clickable History Icon */}
-          <button 
+          <button
             className="p-2 rounded hover:bg-gray-200"
             onClick={() => console.log('History button clicked')}
             aria-label="View History"
@@ -56,7 +55,6 @@ export default function Home() {
         </div>
       </nav>
 
-      {/* Main content area */}
       <main className="flex-grow flex flex-col p-4">
         {/* Plan Mission Manually button */}
         <div className="flex items-start mt-2">
@@ -81,6 +79,9 @@ export default function Home() {
 
           {/* MapButtonGroup overlay */}
           <Button />
+          <div className="relative w-full h-full mt-[1.5vw]">
+          <Map />
+        </div>
         </div>
       </main>
     </div>
