@@ -14,7 +14,7 @@ export default function Home() {
 
   return (
     <div className="flex flex-col min-h-screen bg-slate-400">
-      <nav className="bg-white flex justify-between items-center p-4 shadow">
+      <nav className="bg-white flex justify-between items-center p-4 shadow ">
         <div className="flex items-center">
           <Image
             src="/images/gmfrc.png"
@@ -55,16 +55,16 @@ export default function Home() {
         </div>
       </nav>
 
-      <main className="flex-grow flex flex-col p-4">
+      <main className="flex-grow flex flex-col">
         {/* Plan Mission Manually button */}
-        <div className="flex items-start mt-2">
+        {/* <div className="flex items-start mt-2 absolute">
           <button
             onClick={handlePlanMissionClick}
             className="bg-black text-white px-4 py-2 rounded-lg"
           >
             Plan Mission Manually
           </button>
-        </div>
+        </div> */}
 
         {/* Conditional rendering of MissionManual */}
         {showMissionManual && (
@@ -74,12 +74,12 @@ export default function Home() {
         )}
 
         {/* Map container */}
-        <div className="relative w-full h-full mt-4">
+        <div className="relative w-full h-full">
           {/* Map component would go here */}
 
           {/* MapButtonGroup overlay */}
           <Button />
-          <div className="relative w-full h-full mt-[1.5vw]">
+          <div className="relative w-full h-full ">
           <Map />
         </div>
         </div>

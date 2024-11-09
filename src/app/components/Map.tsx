@@ -8,7 +8,7 @@ const Map = () => {
   const [height, setHeight] = useState("100vh"); 
 
   useEffect(() => {
-    
+    // Set initial height and adjust on window resize
     const updateHeight = () => setHeight(`${window.innerHeight - 150}px`); 
 
     updateHeight();
@@ -19,7 +19,7 @@ const Map = () => {
 
   return (
     <MapContainer
-      style={{ height: height, width: "100%" }} // Use dynamic height here
+      style={{ height: height, width: "100%" }} 
       center={[-7.773401950856007, 110.3804542518012]}
       zoom={13}
       scrollWheelZoom={false}
