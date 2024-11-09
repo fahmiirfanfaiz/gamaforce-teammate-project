@@ -17,11 +17,10 @@ const Map = () => {
     return () => window.removeEventListener("resize", updateHeight);
   }, []);
 
-  // Buat ikon khusus untuk logo UGM
   const ugmIcon = L.icon({
-    iconUrl: "/images/logo-ugm.png", // Path logo UGM di folder public
-    iconSize: [50, 50], // Sesuaikan ukuran ikon
-    iconAnchor: [25, 50], // Menentukan titik tengah bawah gambar sebagai titik jangkar
+    iconUrl: "/images/logo-ugm.png", 
+    iconSize: [50, 50], 
+    iconAnchor: [25, 50], 
   });
 
   return (
