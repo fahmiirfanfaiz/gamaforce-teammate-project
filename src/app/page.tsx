@@ -17,12 +17,12 @@ export default function Home() {
       <Navbar onPlanMissionClick={handlePlanMissionClick} />
 
       <main className="flex-grow flex flex-col">
-        {/* Conditional rendering of MissionManual */}
+        {/* Conditional rendering of MissionManual
         {showMissionManual && (
           <div className="mt-4">
             <MissionManual />
           </div>
-        )}
+        )} */}
 
         {/* Map container */}
         <div className="relative w-full h-full">
