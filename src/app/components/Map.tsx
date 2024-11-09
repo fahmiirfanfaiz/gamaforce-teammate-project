@@ -9,8 +9,7 @@ const Map = () => {
   const [height, setHeight] = useState("100vh");
 
   useEffect(() => {
-    // Set initial height and adjust on window resize
-    const updateHeight = () => setHeight(`${window.innerHeight - 150}px`);
+    const updateHeight = () => setHeight(`${window.innerHeight - 150}px`); 
 
     updateHeight();
     window.addEventListener("resize", updateHeight);
