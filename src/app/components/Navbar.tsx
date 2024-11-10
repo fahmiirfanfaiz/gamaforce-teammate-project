@@ -73,7 +73,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                   <input
                     type="text"
                     placeholder="Mission Name"
-                    className={`border border-gray-300 rounded px-2 py-1 w-full mb-2 italic ${
+                    className={`border border-gray-300 rounded px-2 py-1 w-full mb-2 italic ç${
                       missionName ? "text-black" : "text-gray-400"
                     }`}
                     value={missionName}
