@@ -13,23 +13,22 @@ export default function Home() {
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-slate-400">
+    <div className="relative z-0 pt-16">
+      {/* Navbar with fixed position */}
       <Navbar onPlanMissionClick={handlePlanMissionClick} />
 
-      <main className="flex-grow flex flex-col">
-        {/* Conditional rendering of MissionManual
+      <main className="flex-grow flex flex-col min-h-screen bg-slate-400">
+        {/* Conditional rendering of MissionManual */}
         {showMissionManual && (
           <div className="mt-4">
             <MissionManual />
           </div>
-        )} */}
+        )}
 
         {/* Map container */}
-        <div className="relative w-full h-full">
+        <div className="relative w-full h-full z-0">
           <Button />
-          <div className="relative w-full h-full">
-            <Map />
-          </div>
+          <Map />
         </div>
       </main>
     </div>
