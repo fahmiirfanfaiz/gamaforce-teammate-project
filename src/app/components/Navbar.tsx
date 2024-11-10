@@ -7,17 +7,21 @@ interface NavbarProps {
 
 const Navbar: React.FC<NavbarProps> = () => {
   const [isFormVisible, setIsFormVisible] = useState(false);
+  const [isHistoryVisible, setIsHistoryVisible] = useState(false);
   const [missionName, setMissionName] = useState("");
 
   const handlePlanMissionClick = () => {
     setIsFormVisible((prev) => !prev);
   };
 
+  const handleHistoryClick = () => {
+    setIsHistoryVisible((prev) => !prev);
+  };
+
   const handleMissionSubmit = () => {
-    // Add your submit logic here
     console.log("Mission submitted:", missionName);
-    setMissionName(""); // Clear the input field after submission
-    setIsFormVisible(false); // Hide the form after submission
+    setMissionName("");
+    setIsFormVisible(false);
   };
 
   return (
@@ -35,7 +39,7 @@ const Navbar: React.FC<NavbarProps> = () => {
         <div className="flex items-center space-x-2">
           <button
             className="p-2 rounded hover:bg-gray-200"
-            onClick={() => console.log("History button clicked")}
+            onClick={handleHistoryClick}
             aria-label="View History"
           >
             <svg
@@ -59,21 +63,17 @@ const Navbar: React.FC<NavbarProps> = () => {
               Plan Mission
             </button>
 
-            {/* Form dropdown aligned to the right of the button */}
             {isFormVisible && (
               <>
-                {/* Dark overlay background */}
                 <div
                   className="fixed inset-0 bg-black opacity-50 z-40"
-                  onClick={() => setIsFormVisible(false)} // Closes the form if the overlay is clicked
+                  onClick={() => setIsFormVisible(false)}
                 ></div>
-
-                {/* Dropdown form */}
                 <div className="absolute top-full right-0 mt-2 bg-white border border-gray-300 rounded shadow-lg p-4 w-48 z-50">
                   <input
                     type="text"
                     placeholder="Mission Name"
-                    className={`border border-gray-300 rounded px-2 py-1 w-full mb-2 italic ç${
+                    className={`border border-gray-300 rounded px-2 py-1 w-full mb-2 italic ${
                       missionName ? "text-black" : "text-gray-400"
                     }`}
                     value={missionName}
@@ -91,6 +91,27 @@ const Navbar: React.FC<NavbarProps> = () => {
           </div>
         </div>
       </nav>
+
+      {/* History Modal */}
+      {isHistoryVisible && (
+        <>
+          {/* Gray overlay background */}
+          <div
+            className="fixed inset-0 bg-black opacity-50 z-40"
+            onClick={() => setIsHistoryVisible(false)}
+          ></div>
+          
+          {/* White box container */}
+          <div className="fixed top-16 right-8 bg-white p-4 rounded shadow-lg w-48 z-50">
+            <div className="text-lg font-semibold">Mission History</div>
+            <ul className="mt-2 space-y-2">
+              <li className="p-2 bg-gray-100 rounded">Mission A</li>
+              <li className="p-2 bg-gray-100 rounded">Mission Impossible</li>
+              <li className="p-2 bg-gray-100 rounded">Mission to UGM</li>
+            </ul>
+          </div>
+        </>
+      )}
     </>
   );
 };
