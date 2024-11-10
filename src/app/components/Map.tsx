@@ -63,7 +63,7 @@
         />
 
         {/* Tambahkan Marker dengan ikon UGM */}
-        <Marker position={[-7.770717, 110.377945]} icon={ugmIcon} />
+        <Marker position={[-7.770717, 110.37779]} icon={ugmIcon} />
       </MapContainer>
     );
   };
