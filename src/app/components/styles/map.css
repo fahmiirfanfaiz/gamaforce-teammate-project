@@ -1,0 +1,18 @@
+.leaflet-bottom.leaflet-right .leaflet-draw {
+    margin-bottom: 100px; /* Ubah nilai ini untuk mengatur jarak */
+    margin-right: 10px;
+    background-color: white; 
+    padding: 2px;
+}
+
+.leaflet-control-zoom.leaflet-bar{
+  position: absolute;
+  top: 540px;
+  left: 10px;
+  z-index: 1000;
+  background-color: white; 
+  color: white;
+  border: none; 
+  padding: 2px;
+  cursor: pointer;
+}

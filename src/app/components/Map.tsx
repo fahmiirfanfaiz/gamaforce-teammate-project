@@ -4,6 +4,7 @@ import { EditControl } from "react-leaflet-draw";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import "leaflet-draw/dist/leaflet.draw.css";
+import './styles/map.css';
 
 L.Icon.Default.mergeOptions({
   iconRetinaUrl: "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/images/marker-icon.png",
@@ -33,16 +34,16 @@ const Map = () => {
 
   return (
     <MapContainer
-      style={{ height: `${mapHeight}px`, width: "100%" }}
+      className="w-screen h-screen"
       center={[-7.770717, 110.377945]}
       zoom={17}
-      scrollWheelZoom={false}
+      scrollWheelZoom={true}
     >
       <FeatureGroup>
         <EditControl
-          position="topright"
-          onCreated={_created}
-          draw={{
+            position="bottomright"
+            onCreated={_created}
+            draw={{
             rectangle: true,
             circle: true,
             circlemarker: true,

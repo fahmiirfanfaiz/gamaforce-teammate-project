@@ -1,7 +1,7 @@
+// pages/page.tsx atau pages/index.tsx
 "use client";
 import { useState } from "react";
 import Navbar from "./components/Navbar";
-import Button from "./components/Button";
 import Map from "@/app/components/Map";
 import MissionManual from "./components/MissionManual";
 
@@ -27,7 +27,6 @@ export default function Home() {
 
         {/* Map container */}
         <div className="relative w-full h-full z-0">
-          <Button />
           <Map />
         </div>
       </main>
