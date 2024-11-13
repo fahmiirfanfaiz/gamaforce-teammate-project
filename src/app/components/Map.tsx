@@ -17,7 +17,7 @@ const Map = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      setMapHeight(window.innerHeight); // Update the map height based on the inner height of the window
+      setMapHeight(window.innerHeight); 
     };
 
     window.addEventListener("resize", handleResize);

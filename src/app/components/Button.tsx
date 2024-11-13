@@ -34,11 +34,11 @@ export const PlanMissionButton: React.FC<ButtonProps> = ({ onClick, className, c
             <input
               type="text"
               placeholder="Mission Name"
-              className="border border-gray-300 rounded px-2 py-1 w-full mb-2 italic text-gray-400"
+              className="border border-gray-300 rounded px-2 py-1 w-full mb-2 text-black"
               value={missionName}
               onChange={(e) => setMissionName(e.target.value)}
             />
-            <button onClick={handleMissionSubmit} className="bg-black text-white px-3 py-1 rounded w-full">
+            <button onClick={handleMissionSubmit} className="bg-black hover:bg-gray-300 hover:text-black text-white px-3 py-1 rounded w-full">
               Submit
             </button>
           </div>
@@ -67,7 +67,7 @@ export const HistoryButton: React.FC = () => {
       {isHistoryVisible && (
         <>
           <div className="fixed inset-0 bg-black bg-opacity-50 z-40" onClick={() => setIsHistoryVisible(false)}></div>
-          <div className="absolute top-full right-0 mt-2 bg-white border border-gray-300 rounded shadow-lg p-4 w-48 z-50">
+          <div className="absolute top-full right-0 mt-2 bg-white border border-gray-300 rounded shadow-lg p-4 w-[25vw] h-[18vw] z-50">
             <div className="text-lg font-semibold">Mission History</div>
             <ul className="mt-2 space-y-2">
               <li className="p-2 bg-gray-100 rounded">Mission A</li>

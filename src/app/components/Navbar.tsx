@@ -23,7 +23,7 @@ const Navbar: React.FC<NavbarProps> = ({ onPlanMissionClick }) => {
         <HistoryButton />
         <PlanMissionButton
           onClick={onPlanMissionClick}
-          className="bg-black text-white px-4 py-2 rounded-lg"
+          className="bg-black text-white hover:bg-gray-300 hover:text-black px-4 py-2 rounded-lg"
         >
           Plan Mission
         </PlanMissionButton>
