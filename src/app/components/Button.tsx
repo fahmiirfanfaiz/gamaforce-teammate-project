@@ -1,25 +1,84 @@
 // components/Button.tsx
 import React, { useState } from "react";
 
-interface ButtonProps {
-  onClick?: () => void;
-  children: React.ReactNode;
-  className?: string;
+interface Coordinates {
+  lat: number;
+  lng: number;
 }
 
-export const PlanMissionButton: React.FC<ButtonProps> = ({ onClick, className, children }) => {
+interface ButtonProps {
+  latestCoordinates?: { lat: number; lng: number }[] | null; // Ubah ini menjadi opsional dengan ?
+  onClick: () => void;
+  className: string;
+  children?: React.ReactNode;
+}
+
+export const PlanMissionButton: React.FC<ButtonProps> = ({ latestCoordinates, className, children, onClick }) => {
   const [isFormVisible, setIsFormVisible] = useState(false);
   const [missionName, setMissionName] = useState("");
 
-  const handlePlanMissionClick = () => {
+  // Toggle visibility of the mission form
+  const handlePlanMissionClick = async () => {
     setIsFormVisible((prev) => !prev);
-  };
+  
+    if (latestCoordinates && latestCoordinates.length > 0) {
+      const geoJSONData = {
+        type: "FeatureCollection",
+        features: [
+          {
+            type: "Feature",
+            geometry: {
+              type: "Point",
+              coordinates: [latestCoordinates[0].lng, latestCoordinates[0].lat], // Mengakses elemen pertama dari array
+            },
+            properties: {
+              name: missionName,
+            },
+          },
+        ],
+      };
 
+      console.log("GeoJSON Data:", geoJSONData); // Debug: Check data or send to backend
+  
+      try {
+        // Send the mission data to your backend API
+        const response = await fetch('/api/mission', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(geoJSONData),
+        });
+        
+        // Check if the response is successful
+        if (!response.ok) {
+          throw new Error(`Failed to save mission: ${response.statusText}`);
+        }
+
+        console.log("Mission saved successfully!");
+      } catch (error) {
+        console.error("Error saving mission:", error);
+      }
+    } else {
+      console.log("Coordinates are not available.");
+    }
+  
+    if (onClick) {
+      onClick();
+    }
+  };  
+
+  // Submit mission details
   const handleMissionSubmit = () => {
+    if (!missionName.trim()) {
+      alert("Mission name cannot be empty!");
+      return;
+    }
     console.log("Mission submitted:", missionName);
     setMissionName("");
     setIsFormVisible(false);
   };
+  
 
   return (
     <div className="relative">
@@ -29,7 +88,10 @@ export const PlanMissionButton: React.FC<ButtonProps> = ({ onClick, className, c
 
       {isFormVisible && (
         <>
-          <div className="fixed inset-0 bg-black bg-opacity-50 z-40" onClick={() => setIsFormVisible(false)}></div>
+          <div
+            className="fixed inset-0 bg-black bg-opacity-50 z-40"
+            onClick={() => setIsFormVisible(false)}
+          ></div>
           <div className="absolute top-full right-0 mt-2 bg-white border border-gray-300 rounded shadow-lg p-4 w-48 z-50">
             <input
               type="text"
@@ -38,7 +100,11 @@ export const PlanMissionButton: React.FC<ButtonProps> = ({ onClick, className, c
               value={missionName}
               onChange={(e) => setMissionName(e.target.value)}
             />
-            <button onClick={handleMissionSubmit} className="bg-black hover:bg-gray-300 hover:text-black text-white px-3 py-1 rounded w-full">
+            <button
+              onClick={handleMissionSubmit}
+              disabled={!missionName.trim()}
+              className="bg-black hover:bg-gray-300 hover:text-black text-white px-3 py-1 rounded w-full"
+            >
               Submit
             </button>
           </div>
@@ -66,7 +132,10 @@ export const HistoryButton: React.FC = () => {
 
       {isHistoryVisible && (
         <>
-          <div className="fixed inset-0 bg-black bg-opacity-50 z-40" onClick={() => setIsHistoryVisible(false)}></div>
+          <div
+            className="fixed inset-0 bg-black bg-opacity-50 z-40"
+            onClick={() => setIsHistoryVisible(false)}
+          ></div>
           <div className="absolute top-full right-0 mt-2 bg-white border border-gray-300 rounded shadow-lg p-4 w-[25vw] h-[18vw] z-50">
             <div className="text-lg font-semibold">Mission History</div>
             <ul className="mt-2 space-y-2">

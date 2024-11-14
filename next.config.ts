@@ -1,7 +1,12 @@
+import { config } from 'dotenv';
+
+// Memanggil dotenv.config() untuk menginisialisasi variabel lingkungan
+config();
+
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  // Pengaturan lainnya di sini
 };
 
 export default nextConfig;
