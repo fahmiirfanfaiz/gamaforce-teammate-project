@@ -41,7 +41,7 @@ export default function Home() {
         {/* Map container */}
         <div className="relative w-full h-full z-0">
           {/* Map component */}
-          <Map onCoordinateUpdate={(coords) => setLatestCoordinates([coords])} />
+          <Map onCoordinateUpdate={(coords:any) => setLatestCoordinates([coords])} />
         </div>
 
         {/* Plan Mission Button */}
