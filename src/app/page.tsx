@@ -45,13 +45,13 @@ export default function Home() {
         </div>
 
         {/* Plan Mission Button */}
-        <PlanMissionButton 
+        {/* <PlanMissionButton 
           onClick={handlePlanMissionClick} 
           latestCoordinates={latestCoordinates} 
           className="some-class"
         >
           Plan Mission
-        </PlanMissionButton>
+        </PlanMissionButton> */}
       </main>
     </div>
   );
