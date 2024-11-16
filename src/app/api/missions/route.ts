@@ -7,31 +7,38 @@ export async function POST(request: Request) {
   await dbConnect();
 
   try {
-    let data;
-    try {
-      data = await request.json();
-    } catch (jsonError) {
-      console.error("Invalid JSON in request:", jsonError);
-      return NextResponse.json({ success: false, message: "Invalid JSON format" }, { status: 400 });
-    }
+    const data = await request.json();
 
-    const { name, coordinates } = data;
+    const { name, geometry, properties } = data;
 
     // Validasi input
-    if (!name || !coordinates || !Array.isArray(coordinates)) {
-      return NextResponse.json({ success: false, message: "Invalid input" }, { status: 400 });
+    if (
+      !name ||
+      !geometry ||
+      !geometry.type ||
+      !geometry.coordinates ||
+      !Array.isArray(geometry.coordinates)
+    ) {
+      return NextResponse.json(
+        { success: false, message: "Invalid GeoJSON format" },
+        { status: 400 }
+      );
     }
 
     // Membuat dan menyimpan mission baru
-    const mission = new Mission({ name, coordinates });
+    const mission = new Mission({ name, geometry, properties });
     await mission.save();
 
-    return NextResponse.json({ success: true, message: "Mission saved successfully", mission }, { status: 201 });
+    return NextResponse.json(
+      { success: true, message: "Mission saved successfully", mission },
+      { status: 201 }
+    );
   } catch (error) {
     console.error("Error saving mission:", error);
     return NextResponse.json({ success: false, message: "Server error" }, { status: 500 });
   }
 }
+
 
 // Handler untuk GET /api/mission - Mendapatkan Semua Misi
 export async function GET() {

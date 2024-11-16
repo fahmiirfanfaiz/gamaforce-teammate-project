@@ -12,15 +12,25 @@ interface MissionDocument extends Document {
   coordinates: Coordinates[];
 }
 
-const MissionSchema = new Schema<MissionDocument>({
+const MissionSchema = new Schema({
   name: { type: String, required: true },
-  coordinates: [
-    {
-      lat: { type: Number, required: true },
-      lng: { type: Number, required: true },
+  geometry: {
+    type: {
+      type: String, // e.g., "Point", "LineString", "Polygon"
+      enum: ["Point", "LineString", "Polygon"], // Hanya tipe GeoJSON valid
+      required: true,
     },
-  ],
+    coordinates: {
+      type: [Number], // Array untuk longitude, latitude
+      required: true,
+    },
+  },
+  properties: {
+    type: Map,
+    of: String, // Field tambahan (opsional)
+  },
 });
+
 
 export default models.Mission || model<MissionDocument>('Mission', MissionSchema);
 

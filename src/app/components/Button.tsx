@@ -22,6 +22,7 @@ export const PlanMissionButton: React.FC<ButtonProps> = ({ latestCoordinates, cl
     setIsFormVisible((prev) => !prev);
   
     if (latestCoordinates && latestCoordinates.length > 0) {
+      // Perbaikan: Pastikan koordinat mengikuti format { lat, lng }
       const geoJSONData = {
         type: "FeatureCollection",
         features: [
@@ -29,7 +30,11 @@ export const PlanMissionButton: React.FC<ButtonProps> = ({ latestCoordinates, cl
             type: "Feature",
             geometry: {
               type: "Point",
-              coordinates: latestCoordinates.map((coord) => [coord.lng, coord.lat]),
+              // Mengonversi koordinat menjadi array objek { lat, lng }
+              coordinates: latestCoordinates.map((coord) => ({
+                lat: coord.lat,
+                lng: coord.lng
+              })),
             },
             properties: {
               name: missionName,
@@ -37,7 +42,7 @@ export const PlanMissionButton: React.FC<ButtonProps> = ({ latestCoordinates, cl
           },
         ],
       };
-
+  
       console.log("GeoJSON Data:", geoJSONData); // Debug: Check data or send to backend
   
       try {
@@ -54,7 +59,7 @@ export const PlanMissionButton: React.FC<ButtonProps> = ({ latestCoordinates, cl
         if (!response.ok) {
           throw new Error(`Failed to save mission: ${response.statusText}`);
         }
-
+  
         console.log("Mission saved successfully!");
       } catch (error) {
         console.error("Error saving mission:", error);
@@ -66,7 +71,7 @@ export const PlanMissionButton: React.FC<ButtonProps> = ({ latestCoordinates, cl
     if (onClick) {
       onClick();
     }
-  };  
+  };   
 
   // Submit mission details
   const handleMissionSubmit = () => {
