@@ -1,7 +1,7 @@
 // components/Navbar.tsx
 import React from "react";
 import Image from "next/image";
-import { PlanMissionButton, HistoryButton } from "./Button";
+import { PlanMissionButton } from "./Button";
 
 interface NavbarProps {
   onPlanMissionClick: () => void;
@@ -20,7 +20,7 @@ const Navbar: React.FC<NavbarProps> = ({ onPlanMissionClick }) => {
       </div>
 
       <div className="flex items-center space-x-2">
-        <HistoryButton />
+        {/* <HistoryButton /> */}
         <PlanMissionButton
           onClick={onPlanMissionClick}
           className="bg-black text-white hover:bg-gray-300 hover:text-black px-4 py-2 rounded-lg"

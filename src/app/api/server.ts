@@ -1,6 +1,6 @@
 import express, { Application, Request, Response } from "express";
 import dotenv from "dotenv";
-import connectMongoDB from "@/app/config/dbConnect"; // Corrected path
+import connectMongoDB from "@/app/config/dbConnect";; // Corrected path
 
 dotenv.config(); // Load environment variables from .env file
 
@@ -20,7 +20,7 @@ const startServer = async (): Promise<void> => {
     await connectMongoDB(); // Establish the database connection
 
     app.listen(3000, () => {
-      console.log("Server is running on http://localhost:3000");
+      console.log("Server is running on http://localhost:3000/api/missions");
     });
   } catch (err) {
     console.error("Critical error during server startup:", err);
