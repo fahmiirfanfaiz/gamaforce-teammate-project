@@ -29,7 +29,7 @@ export const PlanMissionButton: React.FC<ButtonProps> = ({ latestCoordinates, cl
             type: "Feature",
             geometry: {
               type: "Point",
-              coordinates: [latestCoordinates[0].lng, latestCoordinates[0].lat], // Mengakses elemen pertama dari array
+              coordinates: latestCoordinates.map((coord) => [coord.lng, coord.lat]),
             },
             properties: {
               name: missionName,
